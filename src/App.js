@@ -1,4 +1,5 @@
 import './App.css';
+import beer from "./images/beer4.png" ;
 import React, { useState } from "react";
 import {
   BrowserRouter as Router,
@@ -7,10 +8,10 @@ import {
   Link
 } from "react-router-dom";
 
-import Home from "./Home";
-import Discover from "./Discover";
-import Contact from "./Contact";
-import Pairing from "./Pairing";
+import Home from "./components/Home";
+import Discover from "./components/Discover";
+import Contact from "./components/Contact";
+import Pairing from "./components/Pairing";
 
 class App extends React.Component {
   state = {
@@ -49,6 +50,7 @@ class App extends React.Component {
             <ul>
               <li><Link to="/" >Home</Link></li>
               <li><Link to="/Discover" >Discover</Link></li>
+              <li><img className="App-logo"src={beer} alt="beer logo"/></li>
               <li><Link to="/Pairing">Pairing</Link></li>
               <li><Link to="/Contact" >Contact</Link></li>
             </ul>

@@ -17,19 +17,19 @@ html{
   }
 
 .App-logo {
-  height: 40vmin;
+  height: 8vh;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
+/*@media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
+}*/
 
 .App-header {
   background-color: var(--dark-grey);
-  height: 15vh;
+  height: 10vh;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -37,7 +37,7 @@ html{
   font-size: calc(10px + 2vmin);
   color: var(--sp-white);
   text-decoration: none;
-
+  padding: 2vh;
 }
 .navbar{
   display: flex;
@@ -53,7 +53,8 @@ ul{
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
-  padding: 2vh;
+  align-items: center;
+  padding: 0;
   margin: 0;
   color: var(--sp-white);
 }
