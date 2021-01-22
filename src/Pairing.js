@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 
-class NavBar extends Component {
+class Pairing extends Component {
   
 
   render() {
@@ -10,4 +10,4 @@ class NavBar extends Component {
     };
   };
    
-  export default NavBar;
+  export default Pairing;

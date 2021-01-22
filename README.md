@@ -1,1 +1,1 @@
-# BrewDog Catalog made with react using PUNK API (@samjbmason )
+# BrewDog Catalog made with React using PUNK API (@samjbmason )

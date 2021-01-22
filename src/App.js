@@ -10,6 +10,7 @@ import {
 import Home from "./Home";
 import Discover from "./Discover";
 import Contact from "./Contact";
+import Pairing from "./Pairing";
 
 class App extends React.Component {
   state = {
@@ -46,10 +47,10 @@ class App extends React.Component {
           
         <div className="navbar">
             <ul>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/Discover">Discover</Link></li>
-              <li><Link to="/Regions">Regions</Link></li>
-              <li><Link to="/Contact">Contact</Link></li>
+              <li><Link to="/" >Home</Link></li>
+              <li><Link to="/Discover" >Discover</Link></li>
+              <li><Link to="/Pairing">Pairing</Link></li>
+              <li><Link to="/Contact" >Contact</Link></li>
             </ul>
 
 
@@ -61,14 +62,14 @@ class App extends React.Component {
       <div className="content">
         
         <Switch>
-              <Route exact path="/"> 
+              <Route exact path="/" > 
                 <Home />
               </Route>
               <Route path="/Discover">
                 <Discover />
               </Route>
-              <Route path="/Regions">
-                <Regions />
+              <Route path="/Pairing">
+                <Pairing />
               </Route>
               <Route path="/Contact">
                 <Contact />
@@ -96,31 +97,14 @@ class App extends React.Component {
   
 };
 
-/*function Home() {
-  return (
-    <div className="content">
-      <h2>Home</h2>
-      
-    </div>
-  );
-}*/
-
-
-function Regions() {
+/*
+function Pairing() {
   return (
     <div>
-      <h2>Regions</h2>
+      <h2>Pairing</h2>
     </div>
   );
 }
-
-
-/*function Contact() {
-  return (
-    <div>
-      <h2>Contact</h2>
-    </div>
-  );
-}*/
+*/
 
 export default App;

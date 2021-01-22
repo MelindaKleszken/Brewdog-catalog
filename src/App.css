@@ -6,6 +6,7 @@ html{
   --dark-grey: rgb(46, 46, 46);
   --light-grey: rgb(101, 102, 103); 
   --sp-white:rgb(225, 226, 227);
+  --bdog-blue:#00AFDB;
 }
 .App {
   margin:0;
@@ -59,10 +60,20 @@ ul{
 li, a {
   text-decoration: none;
   list-style-type: none;
+  color: var(--sp-white);
 }
 a:visited {
   color: var(--sp-white);
 }
+a:active {
+  color: var(--bdog-blue);
+}
+
+.contact-a {
+  color:var(--bdog-blue); 
+}
+
+
 h1, h2 {
   margin:0;
   font-weight:bold;
@@ -72,6 +83,10 @@ h1, h2 {
 
 img{
   height: 300px;
+}
+
+.active {
+  background-color: #0099FF;
 }
 
 /*.count{
