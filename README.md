@@ -1,1 +1,1 @@
-# My first react app
+# BrewDog Catalog made with react using PUNK API (@samjbmason )
