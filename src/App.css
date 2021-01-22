@@ -1,0 +1,134 @@
+html{
+  margin:0;
+  padding:0;
+  --dark-red:rgb(129, 9, 70); 
+  --light-red: rgb(174, 109, 133); 
+  --dark-grey: rgb(46, 46, 46);
+  --light-grey: rgb(101, 102, 103); 
+  --sp-white:rgb(225, 226, 227);
+}
+.App {
+  margin:0;
+  padding:0;
+  text-align: center;
+  height: 100vh;
+  background-color: lightgray;
+  }
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: var(--dark-grey);
+  height: 15vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: var(--sp-white);
+  text-decoration: none;
+
+}
+.navbar{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  color: var(--sp-white);
+}
+
+ul{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 2vh;
+  margin: 0;
+  color: var(--sp-white);
+}
+li, a {
+  text-decoration: none;
+  list-style-type: none;
+}
+a:visited {
+  color: var(--sp-white);
+}
+h1, h2 {
+  margin:0;
+  font-weight:bold;
+  padding: 1vh;
+  font-size: 40px;
+}
+
+img{
+  height: 300px;
+}
+
+/*.count{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height:100vh;
+  justify-content: space-around;
+}
+.countHere{
+  display: flex;
+  align-items: center;
+  width:100px;
+  justify-content: space-around;
+  font-size: 30px;
+}
+.countHere h1{
+  margin: 0 20px;
+}
+
+.wrapper img{
+  position: relative;
+  /*left:100%;
+  margin-left: -200%;
+  object-fit: contain;
+}
+
+.netflix-image{
+  display: flex;
+  flex-direction: row;
+  top: 40%;
+  left: 50%;
+  text-align: center;
+}
+
+.netflix-image img {
+  height: 30px;
+  position: relative;
+  text-align: center;
+}
+
+#netflix-type {
+  color: rgb(0, 0, 0);
+  margin:0;
+
+}
+
+
+.item{
+  display: flex;
+  flex-direction: row;
+}
+.item p{
+  position: relative;
+  top: 70%;
+  left: 50%;
+  z-index: 3;
+  color: red;
+  font-weight:bold;
+}*/
