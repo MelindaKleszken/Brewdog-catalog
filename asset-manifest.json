@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/Brewdog-catalog/static/css/main.77748347.chunk.css",
-    "main.js": "/Brewdog-catalog/static/js/main.2d0feee4.chunk.js",
-    "main.js.map": "/Brewdog-catalog/static/js/main.2d0feee4.chunk.js.map",
+    "main.css": "/Brewdog-catalog/static/css/main.414a0920.chunk.css",
+    "main.js": "/Brewdog-catalog/static/js/main.cbcd0d88.chunk.js",
+    "main.js.map": "/Brewdog-catalog/static/js/main.cbcd0d88.chunk.js.map",
     "runtime-main.js": "/Brewdog-catalog/static/js/runtime-main.67e3ee5c.js",
     "runtime-main.js.map": "/Brewdog-catalog/static/js/runtime-main.67e3ee5c.js.map",
     "static/js/2.39ec9574.chunk.js": "/Brewdog-catalog/static/js/2.39ec9574.chunk.js",
@@ -10,13 +10,14 @@
     "static/js/3.17444448.chunk.js": "/Brewdog-catalog/static/js/3.17444448.chunk.js",
     "static/js/3.17444448.chunk.js.map": "/Brewdog-catalog/static/js/3.17444448.chunk.js.map",
     "index.html": "/Brewdog-catalog/index.html",
-    "static/css/main.77748347.chunk.css.map": "/Brewdog-catalog/static/css/main.77748347.chunk.css.map",
-    "static/js/2.39ec9574.chunk.js.LICENSE.txt": "/Brewdog-catalog/static/js/2.39ec9574.chunk.js.LICENSE.txt"
+    "static/css/main.414a0920.chunk.css.map": "/Brewdog-catalog/static/css/main.414a0920.chunk.css.map",
+    "static/js/2.39ec9574.chunk.js.LICENSE.txt": "/Brewdog-catalog/static/js/2.39ec9574.chunk.js.LICENSE.txt",
+    "static/media/beer4.fb014f23.png": "/Brewdog-catalog/static/media/beer4.fb014f23.png"
   },
   "entrypoints": [
     "static/js/runtime-main.67e3ee5c.js",
     "static/js/2.39ec9574.chunk.js",
-    "static/css/main.77748347.chunk.css",
-    "static/js/main.2d0feee4.chunk.js"
+    "static/css/main.414a0920.chunk.css",
+    "static/js/main.cbcd0d88.chunk.js"
   ]
 }
