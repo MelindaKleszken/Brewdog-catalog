@@ -1,29 +1,113 @@
 import './App.css';
-import beer from "./images/beer4.png" ;
-import React, { useState } from "react";
+import React from "react";
 import {
-  BrowserRouter as Router,
+  BrowserRouter as Router, Link,
   Switch,
-  Route,
-  Link
-} from "react-router-dom";
+  Route,} from "react-router-dom";
 
-import Home from "./components/Home";
+/*import Home from "./components/Home";*/
 import Discover from "./components/Discover";
 import Contact from "./components/Contact";
 import Pairing from "./components/Pairing";
+import NavBar from "./components/navbar";
 
 class App extends React.Component {
   state = {
-    data:"first",
-    description: "smt",
-    foodPairing: [],
-    imageSrc: "none",
+    data: [],
+    name:"hn",
     loading: true
   };
 
 
+
   componentDidMount() {
+    setTimeout(() => {
+      fetch("https://api.punkapi.com/v2/beers/")
+      .then((res) => res.json())
+      .then((data) => {
+        this.setState({data: data, loading: false});
+        console.log({data});
+      });
+    },1000);
+  }
+  componentDidUpdate(){
+    console.log("new value= " + this.state.data[1].name);
+  }
+
+
+  render() {
+    
+    return (
+      <div className="App">
+      <Router>
+        <div className="App-header">
+          <NavBar />
+        </div>
+        <div className="content">
+        
+        <Switch>
+              <Route exact path="/" > 
+
+                <Home />
+                  <div className="beer-details">
+                    {this.state.loading ? (
+                      <h1>loading...</h1>
+                      ) : (
+                    <>
+                      <p>Name: {this.state.data[1].name}</p>
+                      <p>About: {this.state.data[1].description}</p>
+                      <p>Best with: {this.state.data[1].food_pairing[0]}, {this.state.data[1].food_pairing[1]}</p>
+                      <img src={this.state.data[1].image_url} alt={this.state.data[1].name}/>
+                    </>
+                      )}
+                  </div>
+                
+              </Route>
+              <Route path="/Discover">
+                <Discover />
+                <div className="beer-details">
+                    {this.state.loading ? (
+                      <h1>loading...</h1>
+                      ) : (
+                    <>
+                      <p>Name: {this.state.data[1].name}</p>
+                      <p>About: {this.state.data[1].description}</p>
+                      <p>Best with: {this.state.data[1].food_pairing[0]}, {this.state.data[1].food_pairing[1]}</p>
+                      <img src={this.state.data[1].image_url} alt={this.state.data[1].name}/>
+                    </>
+                      )}
+                  </div>
+              </Route>
+              <Route path="/Pairing">
+                <Pairing />
+              </Route>
+              <Route path="/Contact">
+                <Contact />
+              </Route>
+            </Switch>
+      </div>
+      </Router>
+      
+    </div>
+      
+    )
+  };
+
+  
+};
+
+
+const Home = (props) => {
+  return (
+    <div>
+      <h2>Welcome</h2>
+    </div>
+  );
+};
+
+
+/*
+componentDidMount() {
     setTimeout(() => {
       fetch("https://api.punkapi.com/v2/beers/")
       .then((res) => res.json())
@@ -36,77 +120,18 @@ class App extends React.Component {
   componentDidUpdate(){
     console.log("new value= " + this.state.data)
   }
-
-
-  render() {
-    
-    return (
-      <div className="App">
-
-      <Router>
-        <div className="App-header">
-          
-        <div className="navbar">
-            <ul>
-              <li><Link to="/" >Home</Link></li>
-              <li><Link to="/Discover" >Discover</Link></li>
-              <li><img className="App-logo"src={beer} alt="beer logo"/></li>
-              <li><Link to="/Pairing">Pairing</Link></li>
-              <li><Link to="/Contact" >Contact</Link></li>
-            </ul>
-
-
-          </div>
-          
-        </div>
-        
-      
-      <div className="content">
-        
-        <Switch>
-              <Route exact path="/" > 
-                <Home />
-              </Route>
-              <Route path="/Discover">
-                <Discover />
-              </Route>
-              <Route path="/Pairing">
-                <Pairing />
-              </Route>
-              <Route path="/Contact">
-                <Contact />
-              </Route>
-            </Switch>
-      </div>
-      </Router>
-      <div className="beer-details">
-        {this.state.loading ? (
-          <h1>loading...</h1>
-          ) : (
-        <>
-          <p>Name: {this.state.data}</p>
-          <p>About: {this.state.description}</p>
-          <p>Best with: {this.state.foodPairing[0]}, {this.state.foodPairing[1]}</p>
-          <img src={this.state.imageSrc} alt={this.state.data}/>
-        </>
-          )}
-      </div>
-    </div>
-      
-    )
-  };
-
   
-};
-
-/*
-function Pairing() {
+const Home = (props) => {
   return (
     <div>
-      <h2>Pairing</h2>
+      <h2>Welcome</h2>
     </div>
   );
-}
+};
+
+    line 31 will look like: this.setState({ data: data })
+
+  state = { data: [] }
 */
 
 export default App;

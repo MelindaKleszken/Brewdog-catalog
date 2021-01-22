@@ -1,11 +1,24 @@
 import React, {Component} from "react";
+import '../App.css';
+import beer from "../images/beer4.png" ;
+import {
+  BrowserRouter as Router, Link,
+  Switch,
+  Route,} from "react-router-dom";
 
 class NavBar extends Component {
-  
 
   render() {
       return (
-        <h1>Here comes the pairing part.</h1>
+        <div className="navbar">
+          <ul>
+            <li><Link to="/" >Home</Link></li>
+            <li><Link to="/Discover" >Discover</Link></li>
+            <li><img className="App-logo"src={beer} alt="beer logo"/></li>
+            <li><Link to="/Pairing">Pairing</Link></li>
+            <li><Link to="/Contact" >Contact</Link></li>
+          </ul>
+      </div>
       );
     };
   };
