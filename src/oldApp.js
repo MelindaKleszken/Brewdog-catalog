@@ -1,9 +1,9 @@
 import './App.css';
 import React from "react";
 import {
-  BrowserRouter as Router,
+  BrowserRouter as Router, Link,
   Switch,
-  Route} from "react-router-dom";
+  Route,} from "react-router-dom";
 
 /*import Home from "./components/Home";*/
 import Discover from "./components/Discover";
@@ -26,7 +26,7 @@ class App extends React.Component {
       .then((res) => res.json())
       .then((data) => {
         this.setState({data: data, loading: false});
-        //console.log({data});
+        console.log({data});
       });
     },1000);
   }
@@ -48,19 +48,17 @@ class App extends React.Component {
         <Switch>
               <Route exact path="/" > 
 
-                <Home />
+                <Home data={this.props.name}/>
                   <div className="beer-details">
                     {this.state.loading ? (
                       <h1>loading...</h1>
                       ) : (
                     <>
-                     <img src={this.state.data[1].image_url} alt={this.state.data[1].name}/>
-                    <div className="beer-info">
-                      <p>Name: {this.state.data[1].name}</p>
-                      <p>About: {this.state.data[1].description}</p>
-                      <p>Best with: {this.state.data[1].food_pairing[0]}, {this.state.data[1].food_pairing[1]}</p>
+                    <div className="beer-image">
+                    <img src={this.state.data[1].image_url} alt={this.state.data[1].name}/>
                     </div>
-                     
+                      <p>Name: {this.state.data[1].name}</p>
+                      
                     </>
                       )}
                   </div>
@@ -73,16 +71,38 @@ class App extends React.Component {
                       <h1>loading...</h1>
                       ) : (
                     <>
+                    <div className="beer-image">
+                    <img src={this.state.data[1].image_url} alt={this.state.data[1].name}/>
+                    </div>
+                    <div className="beer-info">
                       <p>Name: {this.state.data[1].name}</p>
                       <p>About: {this.state.data[1].description}</p>
                       <p>Best with: {this.state.data[1].food_pairing[0]}, {this.state.data[1].food_pairing[1]}</p>
-                      <img src={this.state.data[1].image_url} alt={this.state.data[1].name}/>
+                    </div>
                     </>
                       )}
                   </div>
               </Route>
               <Route path="/Pairing">
                 <Pairing />
+                <div className="beer-details">
+                    {this.state.loading ? (
+                      <h1>loading...</h1>
+                      ) : (
+                    <>
+                    <div className="beer-image">
+                      <img src={this.state.data[1].image_url} alt={this.state.data[1].name}/>
+                    </div>
+
+                    <div className="beer-info">
+                      <p>Name: {this.state.data[1].name}</p>
+
+                      <p>Best with: {this.state.data[1].food_pairing[0]}, {this.state.data[1].food_pairing[1]}</p>
+                    </div>
+
+                    </>
+                      )}
+                  </div>
               </Route>
               <Route path="/Contact">
                 <Contact />
@@ -100,12 +120,8 @@ class App extends React.Component {
 };
 
 
-const Home = (props) => {
-  return (
-    <div>
-      <h2>Welcome</h2>
-    </div>
-  );
+function Home(props) {
+  return<h2>Welcome {props.name}</h2>
 };
 
 
@@ -131,7 +147,9 @@ const Home = (props) => {
     </div>
   );
 };
+
     line 31 will look like: this.setState({ data: data })
+
   state = { data: [] }
 */
 
