@@ -24,3 +24,5 @@ yarn-error.log*
 
 # other projects
 other projects
+src/stoppedapp.js 
+src/oldApp.js

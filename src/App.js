@@ -10,19 +10,18 @@ import Discover from "./components/Discover";
 import Contact from "./components/Contact";
 import Pairing from "./components/Pairing";
 import NavBar from "./components/navbar";
+//import Home from "./components/Home";
 
 class App extends React.Component {
   state = {
     data: [],
     name:"hn",
-    loading: true
+    loading: true,
   };
-
-
 
   componentDidMount() {
     setTimeout(() => {
-      fetch("https://api.punkapi.com/v2/beers/")
+      fetch("https://api.punkapi.com/v2/beers?page=1&per_page=80")
       .then((res) => res.json())
       .then((data) => {
         this.setState({data: data, loading: false});
@@ -46,40 +45,30 @@ class App extends React.Component {
         <div className="content">
         
         <Switch>
-              <Route exact path="/" > 
-
+              <Route exact path="/" component="Home"> 
                 <Home />
+                <div>
                   <div className="beer-details">
                     {this.state.loading ? (
                       <h1>loading...</h1>
                       ) : (
                     <>
-                     <img src={this.state.data[1].image_url} alt={this.state.data[1].name}/>
-                    <div className="beer-info">
+                      <img src={this.state.data[1].image_url} alt={this.state.data[1].name}/>
+                      <div className="beer-info">
                       <p>Name: {this.state.data[1].name}</p>
                       <p>About: {this.state.data[1].description}</p>
                       <p>Best with: {this.state.data[1].food_pairing[0]}, {this.state.data[1].food_pairing[1]}</p>
-                    </div>
-                     
+                      </div>
+                      
                     </>
                       )}
-                  </div>
+                  </div>         
+                </div>
                 
               </Route>
               <Route path="/Discover">
                 <Discover />
-                <div className="beer-details">
-                    {this.state.loading ? (
-                      <h1>loading...</h1>
-                      ) : (
-                    <>
-                      <p>Name: {this.state.data[1].name}</p>
-                      <p>About: {this.state.data[1].description}</p>
-                      <p>Best with: {this.state.data[1].food_pairing[0]}, {this.state.data[1].food_pairing[1]}</p>
-                      <img src={this.state.data[1].image_url} alt={this.state.data[1].name}/>
-                    </>
-                      )}
-                  </div>
+
               </Route>
               <Route path="/Pairing">
                 <Pairing />
@@ -103,7 +92,7 @@ class App extends React.Component {
 const Home = (props) => {
   return (
     <div>
-      <h2>Welcome</h2>
+      <h2>Home page</h2>
     </div>
   );
 };
