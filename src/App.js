@@ -1,82 +1,51 @@
+//////Beer Catalog React app
 import './App.css';
-import React from "react";
-import {
-  BrowserRouter as Router, Link,
-  Switch,
-  Route,} from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import styled from 'styled-components';
 
 /*import Home from "./components/Home";*/
-import Discover from "./components/Discover";
+//import Discover from "./components/Discover";
 import Contact from "./components/Contact";
 import Pairing from "./components/Pairing";
 import NavBar from "./components/navbar";
+import Home from "./components/Home";
+import Card from './components/Card';
 
-class App extends React.Component {
-  state = {
-    data: [],
-    name:"hn",
-    loading: true
+const App = () => {
+  const [beers, setBeers] = useState([]);
+
+  useEffect(() => {
+    fetchBeers(setBeers);
+  }, []);
+  
+  const fetchBeers = async (index) => {
+    const response = await fetch('https://api.punkapi.com/v2/beers?page=1&per_page=80');
+    const data = await response.json();
+    console.log(data);
+    setBeers(data);
   };
 
-
-
-  componentDidMount() {
-    setTimeout(() => {
-      fetch("https://api.punkapi.com/v2/beers/")
-      .then((res) => res.json())
-      .then((data) => {
-        this.setState({data: data, loading: false});
-        console.log({data});
-      });
-    },1000);
-  }
-  componentDidUpdate(){
-    console.log("new value= " + this.state.data[1].name);
-  }
-
-
-  render() {
-    
     return (
       <div className="App">
-      <Router>
-        <div className="App-header">
-          <NavBar />
-        </div>
-        <div className="content">
-        
-        <Switch>
-              <Route exact path="/" > 
-
-                <Home />
-                  <div className="beer-details">
-                    {this.state.loading ? (
-                      <h1>loading...</h1>
-                      ) : (
-                    <>
-                      <p>Name: {this.state.data[1].name}</p>
-                      <p>About: {this.state.data[1].description}</p>
-                      <p>Best with: {this.state.data[1].food_pairing[0]}, {this.state.data[1].food_pairing[1]}</p>
-                      <img src={this.state.data[1].image_url} alt={this.state.data[1].name}/>
-                    </>
-                      )}
-                  </div>
-                
+        <Router>
+          <div className="App-header">
+            <NavBar />
+          </div>
+          <div className="content">
+          
+            <Switch>
+              <Route exact path="/"> 
+                <Home />                
               </Route>
               <Route path="/Discover">
                 <Discover />
-                <div className="beer-details">
-                    {this.state.loading ? (
-                      <h1>loading...</h1>
-                      ) : (
-                    <>
-                      <p>Name: {this.state.data[1].name}</p>
-                      <p>About: {this.state.data[1].description}</p>
-                      <p>Best with: {this.state.data[1].food_pairing[0]}, {this.state.data[1].food_pairing[1]}</p>
-                      <img src={this.state.data[1].image_url} alt={this.state.data[1].name}/>
-                    </>
-                      )}
-                  </div>
+                  <Container>
+                  {beers.map((beer, index) => {
+                    return <Card key={index} beer={beer}/>
+                  })}
+                  </Container>
+
               </Route>
               <Route path="/Pairing">
                 <Pairing />
@@ -85,25 +54,32 @@ class App extends React.Component {
                 <Contact />
               </Route>
             </Switch>
+          </div>
+        </Router>
       </div>
-      </Router>
-      
-    </div>
-      
-    )
-  };
-
-  
+    );
 };
 
-
-const Home = (props) => {
+const Discover = () => {
   return (
-    <div>
-      <h2>Welcome</h2>
-    </div>
+    <h1>Discover</h1>
   );
 };
+
+const Container = styled.div`
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:center;
+`;
+
+// const Home = (props) => {
+//   return (
+//     <div>
+//       <h2>Home page</h2>
+//     </div>
+//   );
+// };
 
 
 /*
@@ -128,9 +104,7 @@ const Home = (props) => {
     </div>
   );
 };
-
     line 31 will look like: this.setState({ data: data })
-
   state = { data: [] }
 */
 

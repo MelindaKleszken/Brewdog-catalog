@@ -1,0 +1,17 @@
+ html{
+    margin:0;
+    padding:0;
+    --sp-white:rgb(225, 226, 227);
+    --bdog-blue:#00AFDB;
+}
+
+.contact-details{
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
+    margin: 0; 
+}
