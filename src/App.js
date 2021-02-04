@@ -1,30 +1,37 @@
-//////Beer Catalog React app
 import './App.css';
 import React, {useEffect, useState} from "react";
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import styled from 'styled-components';
 
-/*import Home from "./components/Home";*/
-//import Discover from "./components/Discover";
-import Contact from "./components/Contact";
-import Pairing from "./components/Pairing";
+import Contact from "./components/contact";
+//import Pairing from "./components/Pairing";
 import NavBar from "./components/navbar";
 import Home from "./components/Home";
-import Card from './components/Card';
+import Card from './components/Card.js';
 
 const App = () => {
   const [beers, setBeers] = useState([]);
+  const [foods, setFoods] = useState('');
 
   useEffect(() => {
     fetchBeers(setBeers);
+    // fetchFood(setFoods);
   }, []);
   
   const fetchBeers = async (index) => {
     const response = await fetch('https://api.punkapi.com/v2/beers?page=1&per_page=80');
     const data = await response.json();
-    console.log(data);
+    //console.log(data);
     setBeers(data);
   };
+
+  //get all the food_pairing
+  // const fetchFood = async (index) => {
+  //   const response = await fetch('https://api.punkapi.com/v2/beers?food');
+  //   const data = await response.json();
+  //   console.log(data);
+  //   setFoods(data);
+  // };
 
     return (
       <div className="App">
@@ -49,6 +56,11 @@ const App = () => {
               </Route>
               <Route path="/Pairing">
                 <Pairing />
+                  <Container>
+                    {/* {foods.map((beer, index, food) => {
+                      return <Pairing key={index} food={food} beer={beer}/>
+                    })} */}
+                  </Container>
               </Route>
               <Route path="/Contact">
                 <Contact />
@@ -66,6 +78,12 @@ const Discover = () => {
   );
 };
 
+const Pairing = () => {
+  return (
+    <h1>Pairing</h1>
+  );
+};
+
 const Container = styled.div`
   width: 100vw;
   display: flex;
@@ -73,39 +91,5 @@ const Container = styled.div`
   justify-content: center;
 `;
 
-// const Home = (props) => {
-//   return (
-//     <div>
-//       <h2>Home page</h2>
-//     </div>
-//   );
-// };
-
-
-/*
-componentDidMount() {
-    setTimeout(() => {
-      fetch("https://api.punkapi.com/v2/beers/")
-      .then((res) => res.json())
-      .then((data) => {
-        this.setState({data: data[3].name, loading: false, description: data[3].description, foodPairing: data[3].food_pairing, imageSrc: data[3].image_url});
-        console.log({data});
-      });
-    },1000);
-  }
-  componentDidUpdate(){
-    console.log("new value= " + this.state.data)
-  }
-  
-const Home = (props) => {
-  return (
-    <div>
-      <h2>Welcome</h2>
-    </div>
-  );
-};
-    line 31 will look like: this.setState({ data: data })
-  state = { data: [] }
-*/
 
 export default App;
